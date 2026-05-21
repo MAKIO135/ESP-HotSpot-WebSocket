@@ -3,11 +3,13 @@
 // https://www.upesy.fr/blogs/tutorials/how-create-a-wifi-acces-point-with-esp32
 // https://shawnhymel.com/1675/arduino-websocket-server-using-an-esp32/
 
-#include <WiFi.h>
+#include <WiFi.h> // for ESP32
+//#include <ESP8266WiFi.h> // for ESP8266
 #include <WebSocketsServer.h>
 
-const char* ssid = "feather32";
-const char* password = "feather32";
+/* Set these to your desired credentials. */
+const char *ssid = "huzzah32";
+const char *password = "huzzah32";
 
 WebSocketsServer webSocket = WebSocketsServer(80);
 
@@ -55,8 +57,10 @@ void onWebSocketEvent(uint8_t num,
 void setup() {
   Serial.begin(115200);
   Serial.println("\n[*] Creating AP");
-  WiFi.mode(WIFI_AP);
-  WiFi.softAP(ssid, password);
+
+  WiFi.softAP(ssid);
+  //WiFi.softAP(ssid, password); // if you want a password
+
   Serial.print("[+] AP Created with IP Gateway ");
   Serial.println(WiFi.softAPIP());
 
