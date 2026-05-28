@@ -58,6 +58,7 @@ void setup() {
   Serial.begin(115200);
   Serial.println("\n[*] Creating AP");
 
+  WiFi.mode(WIFI_AP);
   WiFi.softAP(ssid);
   //WiFi.softAP(ssid, password); // if you want a password
 
